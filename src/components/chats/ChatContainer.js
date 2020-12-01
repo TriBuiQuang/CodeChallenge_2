@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SideBar from "./SideBar";
+
 import { COMMUNITY_CHAT, MESSAGE_SENT, MESSAGE_RECIEVED, TYPING } from "../../Events";
 import ChatHeading from "./ChatHeading";
 import Messages from "../messages/Messages";
@@ -112,15 +112,11 @@ export default class ChatContainer extends Component {
       socket.emit(TYPING, { chatId, isTyping });
    };
 
-   setActiveChat = (activeChat) => {
-      this.setState({ activeChat });
-   };
    render() {
       const { user, logout } = this.props;
       const { chats, activeChat } = this.state;
       return (
          <div className="container">
-            <SideBar logout={logout} chats={chats} user={user} activeChat={activeChat} setActiveChat={this.setActiveChat} />
             <div className="chat-room-container">
                {activeChat !== null ? (
                   <div className="chat-room">
